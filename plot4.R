@@ -1,0 +1,21 @@
+source("Helper.R")
+png(filename = "plot4.png", width = 480, height = 480,
+    units = "px", bg = "transparent")
+par(mfrow = c(2,2))
+
+plot(DateTime, Global_active_power, type = "l", xlab = "", ylab = "Global Active Power")
+
+plot(DateTime, Voltage, type="l", xlab="datetime", ylab="Voltage")
+
+plot(DateTime, Sub_metering_1, type="l", col="black", 
+     xlab="", ylab="Energy sub metering")
+lines(DateTime, Sub_metering_2, col="red")
+lines(DateTime, Sub_metering_3, col="blue")
+
+legend("topright", bty = "n", col = c("black", "red", "blue"), 
+                                     c("sub_metering_1", "sub_metering_2",
+                                       "sub_metering_3"), lwd=1)
+
+plot(DateTime, Global_reactive_power, type="l", col="black",
+     xlab="datetime", ylab=colnames(newData)[4])
+dev.off()
